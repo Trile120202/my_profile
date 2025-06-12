@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
+interface EmailJSError {
+  text?: string;
+  message?: string;
+}
+
 export default function Contact() {
   const [loading, setLoading] = useState(false);
 
@@ -27,9 +32,9 @@ export default function Contact() {
         throw new Error('Failed to send message');
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error details:', error);
-      alert(error?.message || 'Failed to send message. Please try again.');
+      alert((error as EmailJSError)?.message || 'Failed to send message. Please try again.');
     } finally {
       setLoading(false);
     }

@@ -112,7 +112,7 @@ export default function About() {
             Tech Stack
           </h3>
           <motion.div className="flex flex-wrap justify-center gap-4">
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div
                 key={skill}
                 variants={skillItem}

@@ -1,12 +1,9 @@
 // A basic setup for a Next.js personal portfolio
-import { Inter } from "next/font/google";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
