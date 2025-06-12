@@ -18,14 +18,23 @@ export default function Contact() {
 
     const form = e.currentTarget;
     try {
-      const result = await emailjs.sendForm(
+      const templateParams = {
+        to_name: 'Trí Lê Minh',
+        from_name: (form.elements.namedItem('user_name') as HTMLInputElement).value,
+        from_email: (form.elements.namedItem('user_email') as HTMLInputElement).value,
+        message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+        reply_to: (form.elements.namedItem('user_email') as HTMLInputElement).value,
+      };
+
+      const result = await emailjs.send(
         'service_mw9fr6n',
-        'template_xc17sgi', 
-        form,
+        'template_xc17sgi',
+        templateParams,
         'O1m-S9mdgXooSIwDf'
       );
 
       if (result.text === 'OK') {
+        console.log(`Message from: ${templateParams.user_name} (${templateParams.user_email})`);
         form.reset();
         alert('Message sent successfully!');
       } else {
