@@ -34,7 +34,7 @@ export default function Contact() {
       );
 
       if (result.text === 'OK') {
-        console.log(`Message from: ${templateParams.user_name} (${templateParams.user_email})`);
+        console.log(`Message from: ${templateParams.from_name} (${templateParams.from_email})`);
         form.reset();
         alert('Message sent successfully!');
       } else {
